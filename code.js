@@ -1,8 +1,22 @@
 let game = document.querySelector(".game")
 let ripper = document.querySelector(".ripper")
+let createGridButton = document.getElementById("createGridButton")
 
-let createDivs = (num) => {
-  for (let i = 0; i < num; i++) {
+createGridButton.addEventListener("click", () => {
+  let numBoxes = parseInt(document.getElementById("numBoxes").value)
+
+  if (!isNaN(numBoxes) && numBoxes > 0) {
+    let gridSize = numBoxes
+    createDivs(gridSize)
+  } else {
+    alert("Please enter a valid square root.")
+  }
+})
+
+let createDivs = (gridSize) => {
+  game.innerHTML = ""
+
+  for (let i = 0; i < gridSize * gridSize; i++) {
     let gridDiv = document.createElement(`div`)
     gridDiv.classList.add("gridDiv")
 
@@ -12,15 +26,12 @@ let createDivs = (num) => {
 
     game.appendChild(gridDiv)
   }
+
+  game.style.setProperty("--columns", gridSize)
 }
 
-createDivs(40)
-
 let reset = () => {
-  let gridDiv = document.querySelectorAll(".gridDiv")
-  gridDiv.forEach((gridDiv) => {
-    gridDiv.classList.remove("hovered")
-  })
+  game.innerHTML = ""
 }
 
 ripper.addEventListener("click", reset)
