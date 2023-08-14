@@ -8,14 +8,20 @@
     <script src="code.js" defer></script>
   </head>
   <body>
-    <div>
+    <div class="bigDiv">
+      <p class="title">ETCH-A-SKETCH</p>
+      <p class="smallTitle">hover your mouse over the box to draw!</p>
       <div class="game"></div>
-      <label for="numBoxes"
-        >Enter how how many boxes wide you want your game to be.</label
-      >
-      <input type="number" id="numBoxes" />
+      <div class="forms">
+        <label for="numBoxes"
+          >Enter how how many boxes wide you want your game to be. Max is
+          100!</label
+        >
+        <input type="number" id="numBoxes" /><button id="createGridButton">
+          Create
+        </button>
+      </div>
     </div>
-    <button id="createGridButton">Create</button>
-    <button class="ripper"></button>
+    <button class="ripper">reset</button>
   </body>
 </html>
